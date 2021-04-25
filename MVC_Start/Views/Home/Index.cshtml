@@ -15,9 +15,11 @@
     <header id="header">
         <div class="inner" style="font-weight:bold;font-size:x-large">
             <nav id="nav">
-                <a href="Index">Home</a>
+            
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 <a asp-area="" asp-controller="Home" asp-action="Searchuniv">Search Univ</a>
-                <a href="Aboutus">About Us</a>
+                <a asp-area="" asp-controller="Home" asp-action="Aboutus">About Us</a>
+
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>

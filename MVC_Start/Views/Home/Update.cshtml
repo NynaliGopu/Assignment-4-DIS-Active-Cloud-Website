@@ -1,4 +1,7 @@
-﻿<!DOCTYPE HTML>
+﻿@model MVC_Start.Models.ProgramData
+
+
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Elements - Theory by TEMPLATED</title>
@@ -12,9 +15,9 @@
     <header id="header">
         <div class="inner" style="font-weight:bold;font-size:x-large">
             <nav id="nav">
-                <a href="Index">Home</a>
-                <a href="Searchuniv">Search Univ</a>
-                <a href="Aboutus">About Us</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-area="" asp-controller="Home" asp-action="Searchuniv">Search Univ</a>
+                <a asp-area="" asp-controller="Home" asp-action="Aboutus">About Us</a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -29,32 +32,35 @@
             </header>
 
             <hr class="major" />
-            <!-- Form -->
 
-            <form method="post" action="#">
+            <form method="post" asp-controller="Home" asp-action="Update">
                 <div class="row uniform table-wrapper">
 
                     <div class="6u 12u$(xsmall)">
                         <div class="wrapper">
-                            <label for="Institution">Institution (Read-Only)</label>
-                            <input type="text" name="Instituition Name" id="Instituition Name" value="" placeholder="Concorde Career Institute-Tampa" />
 
                         </div>
                     </div>
                     <!-- Break -->
-                    <div class="6u$ 12u$(xsmall)">
+                        <div class="12u$"
                         <label for="Programs">Program Name</label>
-                        <input type="text" name="Programs" id="Program" value="" placeholder="Program" />
+
+                        <input placeholder="Program Name" asp-for="title" type="text" class="validate">
+
+                        <span asp-validation-for="title" class="red-text"></span>
+
+
                     </div>
 
-                    <!-- Break -->
-                    <div class="12u$">
-                        <ul class="actions">
-                            <li><input type="submit" class="button special" value="Update" /></li>
-                            <li><input type="reset" value="Reset" class="alt" /></li>
-                        </ul>
+
+                        <div class="12u$">
+                            <ul class="actions">
+
+                                <button class="btn waves-effect waves-light" type="submit" name="action:Update">Confirm Edit</button>
+                                <li><input type="reset" value="Reset" class="alt" /></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
             </form>
 
             <hr />
@@ -85,3 +91,4 @@
 
 </body>
 </html>
+

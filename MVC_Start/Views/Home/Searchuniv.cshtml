@@ -17,9 +17,9 @@
     <header id="header">
         <div class="inner" style="font-weight:bold;font-size:x-large">
             <nav id="nav">
-                <a href="Index">Home</a>
-                <a href="Searchuniv">Search Univ</a>
-                <a href="Aboutus">About Us</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-area="" asp-controller="Home" asp-action="Searchuniv">Search Univ</a>
+                <a asp-area="" asp-controller="Home" asp-action="Aboutus">About Us</a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -33,9 +33,8 @@
                 <!--<h2>Search</h2>-->
 
                 <h2><img src="~/images/search.jpg" alt="search" height="100" width="200" /></h2>
-                <input type="text" id="field3" class="field-style field-split align-left" placeholder="Alabama A & M University" />
+                <input type="text" id="field3" class="field-style field-split align-left" placeholder="Examples - Alabama A & M University,  Enterprise State" />
               
-             @*onclick="location.href='@Url.Action("SearchResults", "Home")?schoolName=' + $('#field3').val()*@
             <input type="button" value="Search" onclick="SearchResults()" />
 
             <br />
@@ -71,9 +70,6 @@
 </body>
 </html>
 <script type="text/javascript">
-
-    @*<a href='@Url.Action("SearchResults","Home")?schoolName=' document.getElementById("field3").value'>Search</a>*@
-    @*@Html.ActionLink("Search", "SearchResults", "SearchUniv", new { schoolName =  $("#field3").value }, null) *@
 
    function SearchResults() {
        //var sName = document.getElementById("field3").value;
