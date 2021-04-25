@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\AM11.jpeg" />
+    <Content Remove="wwwroot\images\Collegescorecard.png" />
+    <Content Remove="wwwroot\images\datavisualization.png" />
+    <Content Remove="wwwroot\images\ERD.png" />
+    <Content Remove="wwwroot\images\homeimage.JPG" />
+    <Content Remove="wwwroot\images\imagenew.jpg" />
+    <Content Remove="wwwroot\images\Nynali2.jpg" />
+    <Content Remove="wwwroot\images\saranya.jpg" />
+    <Content Remove="wwwroot\images\search.jpg" />
+    <Content Remove="wwwroot\images\usf-logo-png-2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content\" />
+    <Folder Include="wwwroot\lib\" />
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\StyleSheet.css" />
+    <None Include="wwwroot\images\AM11.jpeg" />
+    <None Include="wwwroot\images\Collegescorecard.png" />
+    <None Include="wwwroot\images\datavisualization.png" />
+    <None Include="wwwroot\images\ERD.png" />
+    <None Include="wwwroot\images\homeimage.JPG" />
+    <None Include="wwwroot\images\imagenew.jpg" />
+    <None Include="wwwroot\images\Nynali2.jpg" />
+    <None Include="wwwroot\images\saranya.jpg" />
+    <None Include="wwwroot\images\search.jpg" />
+    <None Include="wwwroot\images\usf-logo-png-2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
+  </ItemGroup>
+
+</Project>

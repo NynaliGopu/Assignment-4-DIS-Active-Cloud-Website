@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+ 
+</head>
+<body>
+
+    <div>
+        <header id="header">
+            <div class="inner" style="font-weight:bold;font-size:x-large">
+                <nav id="nav">
+                    @*<a href="Index.cshtml">Home</a>
+                    <a href="Home/Searchuniv.html">Search Univ</a>
+                    <a href="Aboutus.cshtml">About Us</a>*@
+                </nav>
+                <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            </div>
+        </header>
+
+
+    </div>
+
+    <div class="body-content">
+        @RenderBody()
+    </div>
+
+    @*<footer id="footer">
+        <div class="inner">
+            <div class="flex">
+                <div class="copyright">
+                    &copy; USF <a>GROUP 4</a>
+
+                </div>
+            </div>
+        </div>
+    </footer>*@
+
+</body>
+</html>

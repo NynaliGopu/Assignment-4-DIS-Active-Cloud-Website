@@ -1,0 +1,152 @@
+﻿
+
+
+﻿
+<!DOCTYPE HTML>
+
+
+<html>
+<head>
+    <title>Elements - Theory by TEMPLATED</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    @*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>*@
+</head>
+<body class="subpage">
+
+
+    <header id="header">
+        <div class="inner" style="font-weight:bold;font-size:x-large">
+            <nav id="nav">
+                <a href="Index">Home</a>
+                <a href="Searchuniv">Search Univ</a>
+                <a href="Aboutus">About Us</a>
+            </nav>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <section id="main" class="wrapper">
+        <div class="inner">
+
+            <header class="align-center">
+                <!--<h2>Search</h2>-->
+
+                <h2><img src="~/images/search.jpg" alt="search" height="100" width="200" /></h2>
+                <input type="text" id="field3" class="field-style field-split align-left" placeholder="Concorde Career Institute-Tampa" />
+
+                <a href='@Url.Action("SearchResults","Home")?schoolName=' $('#field3').value'>Search</a>
+
+                @*onclick="location.href='@Url.Action("SearchResults", "Home")?schoolName=' + $('#field3').val()*@
+                @*<input type="button" value="Search"
+            onclick="SearchResults()" />*@
+
+                <br />
+
+            </header>
+
+            <hr class="major" />
+
+            <!-- Table -->
+            <h3>Search Results</h3>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead><tr class="tableizer-firstrow"><th>INSTITUITION NAME</th><th>CITY</th><th>STATE</th><th>ZIP</th><th>Operation</th></tr></thead>
+                    <tbody>
+
+                        @foreach (var item in ViewBag.Schools)
+                        {
+
+                            <tr>
+                                <td>
+
+
+
+
+
+                                    @item.schoolname
+                                </td>
+                                <td>
+
+
+
+
+
+                                    @item.schoolcity
+                                </td>
+                                <td>
+
+
+
+
+
+                                    @item.schoolstate
+                                </td>
+                                <td>
+
+
+
+
+
+                                    @item.schoolzip
+                                </td>
+                                <td>
+
+
+                                    @Html.ActionLink(
+                                    "Details",
+                                    "Programdetails",
+                                    "Home",
+                                    new { id = item.ope6_id }
+                                    );
+
+                                    @*<a href='/Home/Programdetails/' + @item.ope6_id>Details</a>*@
+                                    
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"></td>
+
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+</section>
+
+
+    <footer id="footer">
+        <div class="inner">
+            <div class="flex">
+                <div class="copyright">
+                    &copy; USF <a>GROUP 4</a>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
+<script type="text/javascript">
+    @*function SearchResults() {
+        //var sName = $("#field3").val();
+        @Html.ActionLink("Search", "SearchResults", "SearchUniv", new { schoolName =  $("#field3").value }, null)
+    }*@
+</script>
