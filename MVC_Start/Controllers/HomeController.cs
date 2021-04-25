@@ -7,6 +7,7 @@ using MVC_Start.Models;
 using Newtonsoft.Json;
 using System.Net.Http;
 using MVC_Start.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace MVC_Start.Controllers
 {
@@ -34,10 +35,10 @@ namespace MVC_Start.Controllers
         {
             return View();
         }
-
         public IActionResult AboutUs()
         {
             return View();
+
 
         }
 
@@ -56,7 +57,8 @@ namespace MVC_Start.Controllers
 
         public IActionResult Searchuniv()
         {
-            
+
+
             var schoolDataList = new List<SchoolData>();
             if (!dbContext.Schools.Any())
             {
@@ -94,8 +96,8 @@ namespace MVC_Start.Controllers
                         {
                             var school = new SchoolData()
                             {
-                            //id = s.id,
-                            ope6_id = s.ope6_id,
+                                //id = s.id,
+                                ope6_id = s.ope6_id,
 
 
                                 schoolcity = s.schoolcity,
@@ -124,15 +126,12 @@ namespace MVC_Start.Controllers
             }
             ViewBag.Schools = schoolDataList;
             schoolsInformation = schoolDataList;
-
-            //backup
-
             if (!dbContext.Programs.Any())
             {
                 dbContext.Database.EnsureCreated();
                 ProgramData[] plist = new ProgramData[]
                     {
-                
+
 
                      new ProgramData{code="1", title="Management Sciences and Quantitative Methods", ope6_id="001002", unit_id=1 },
                      new ProgramData { code = "2", title = "Journalism", ope6_id = "001002", unit_id = 2 },
@@ -194,13 +193,13 @@ namespace MVC_Start.Controllers
                      new ProgramData { code = "58", title = "Computer Systems Networking and Telecommunicationss", ope6_id = "007871", unit_id = 58 },
                      new ProgramData { code = "59", title = "Computer Software and Media Applications", ope6_id = "007871", unit_id = 59 },
                      new ProgramData { code = "60", title = "Vehicle Maintenance and Repair Technologies", ope6_id = "007871", unit_id = 60 },
-            
+
             };
-                        foreach (ProgramData p in plist)
-                        { 
-                             dbContext.Programs.Add(p);
-                        }
-                              dbContext.SaveChanges();
+                foreach (ProgramData p in plist)
+                {
+                    dbContext.Programs.Add(p);
+                }
+                dbContext.SaveChanges();
 
             }
 
@@ -210,8 +209,8 @@ namespace MVC_Start.Controllers
         [HttpPost]
         public void SearchResults(string id)
         {
-            filteredInformation = schoolsInformation.Where(x => x.schoolname.Contains(id)).ToList();
-            
+            filteredInformation = schoolsInformation.Where(x => x.schoolname.ToLower().Contains(id.ToLower())).ToList();
+
             return;
         }
 
@@ -220,35 +219,123 @@ namespace MVC_Start.Controllers
             ViewBag.Schools = filteredInformation;
             return View();
         }
-        
+
         public IActionResult Programdetails(string id)
         {
-            
 
             var programDataList = new List<ProgramData>();
 
-                programDataList = dbContext.Programs.ToList();
-                ViewBag.Programs = programDataList.Where(x => x.ope6_id == id).ToList();
-                return View(programDataList);
 
-         
-         
+            TempData["ope6Id"] = id;
+            programDataList = dbContext.Programs.ToList();
+            ViewBag.Programs = programDataList.Where(x => x.ope6_id == id).ToList();
+            return View(programDataList);
         }
 
 
-        public IActionResult Update()
+        public IActionResult Update(string id)
         {
+
+            ProgramData datatoupdate = dbContext.Programs.Where(x => x.code == id).FirstOrDefault();
+
+            ProgramData update = new ProgramData()
+            {
+
+                ID = datatoupdate.ID,
+                code = datatoupdate.code,
+                title = datatoupdate.title,
+                ope6_id = datatoupdate.ope6_id,
+                unit_id = datatoupdate.unit_id
+
+            };
+
+
+            return View(update);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Update(string id, [Bind("code,title,ope6_id,unit_id")] ProgramData newupdated)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    ProgramData programtobeupdated = dbContext.Programs
+                                  .Where(p => p.code == id)
+                                    .FirstOrDefault();
+
+                    programtobeupdated.title = newupdated.title;
+
+                    dbContext.Update(programtobeupdated);
+                    dbContext.SaveChanges();
+                    //await _dbcontext.SaveChangesAsync();
+                    return RedirectToAction(nameof(Thanks), new { id = "Thanks! The record has been edited." });
+                }
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                // Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes");
+            }
+
             return View();
         }
 
-        public IActionResult Delete()
+
+        public async Task<IActionResult> Delete(string id)
         {
+            ProgramData programtobedeleted = dbContext.Programs
+                          .Where(p => p.code == id)
+                            .FirstOrDefault();
+            if (programtobedeleted != null)
+            {
+                dbContext.Programs.Remove(programtobedeleted);
+                dbContext.SaveChanges();
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Deleteconfirmed(string id)
+        {
+            ProgramData programtobedeleted = dbContext.Programs
+                          .Where(p => p.code == id)
+                            .FirstOrDefault();
+            dbContext.Programs.Remove(programtobedeleted);
+            dbContext.SaveChanges();
+            return RedirectToAction(nameof(Thanks), new { id = "The record has been deleted." });
+        }
+
+        public IActionResult Thanks(string id)
+        {
+            ViewBag.message = id;
             return View();
         }
 
         public IActionResult Createnew()
         {
             return View();
+        }
+
+        [HttpPost]
+        public void Createnew(string id)
+        {
+            int data = dbContext.Programs.OrderByDescending(x => x.unit_id).First().unit_id;
+            ProgramData pg = new ProgramData
+            {
+                ope6_id = TempData["ope6Id"].ToString(),
+                title = id,
+                code = (data + 1).ToString(),
+                unit_id = data + 1
+            };
+            dbContext.Programs.Add(pg);
+            dbContext.SaveChanges();
+          
         }
 
     }

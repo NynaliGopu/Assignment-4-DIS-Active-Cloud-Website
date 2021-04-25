@@ -1,4 +1,121 @@
-﻿<!DOCTYPE HTML>
+﻿@*<!DOCTYPE HTML>
+    <html>
+    <head>
+        <title>Elements - Theory by TEMPLATED</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body class="subpage">
+
+         Header
+        <header id="header">
+            <div class="inner" style="font-weight:bold;font-size:x-large">
+                <nav id="nav">
+                    <a href="Index">Home</a>
+                    <a href="Searchuniv">Search Univ</a>
+                    <a href="Aboutus">About Us</a>
+                </nav>
+                <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            </div>
+        </header>
+
+        <h3>Program Details</h3>
+        <header class="align-center">
+            <h2>Program Details</h2>
+            <p>Academic Programs offered by each Institution </p>
+        </header>
+        <h4>Details</h4>
+        <div class="table-wrapper">
+            <table class="alt">
+                <thead>
+                    <tr>
+                        <th>Program Id</th>
+                        <th>Program Name</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in ViewBag.Programs)
+                    {
+
+                        <tr>
+                            <td>
+
+                                @item.ID
+                            </td>
+                            <td>
+
+                                @item.code
+                            </td>
+                            <td>
+
+                                @item.title
+                            </td>
+                            <td>
+
+                                @item.ope6_id
+                            </td>
+                            <td>
+
+
+                                @item.unit_id
+                            </td>
+
+                        <td>
+                            @Html.ActionLink(
+                                                 "Update",
+                                                 "Update",
+                                                 "Home",
+                                                 new { id = item.code }
+                                                 );
+
+
+                                                <input type="button" value="Delete" onclick="Delete()" />
+
+
+
+                                                <a href="update" class="button special small">Update</a> <a href="Delete" class="button special small">Delete</a>
+                                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="12u$">
+            <ul class="actions">
+                <center><a href="/Home/createnew" class="button special small">Create a New Program</a></center>
+            </ul>
+        </div>
+
+
+        </footer>
+
+        <footer id="footer">
+            <div class="inner">
+                <div class="flex">
+                    <div class="copyright">
+                        &copy; USF <a>GROUP 4</a>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+         Scripts
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+    </html>*@
+
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Elements - Theory by TEMPLATED</title>
@@ -12,9 +129,9 @@
     <header id="header">
         <div class="inner" style="font-weight:bold;font-size:x-large">
             <nav id="nav">
-                <a href="Index">Home</a>
-                <a href="Searchuniv">Search Univ</a>
-                <a href="Aboutus">About Us</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-area="" asp-controller="Home" asp-action="Searchuniv">Search Univ</a>
+                <a asp-area="" asp-controller="Home" asp-action="Aboutus">About Us</a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -25,14 +142,15 @@
         <h2>Program Details</h2>
         <p>Academic Programs offered by each Institution </p>
     </header>
-    <h4>Details</h4>
+    <h4>Program Details</h4>
+
     <div class="table-wrapper">
         <table class="alt">
             <thead>
                 <tr>
                     <th>Program Id</th>
                     <th>Program Name</th>
-                    <th>Operations</th>
+                    @*<th>Operations</th>*@
                 </tr>
             </thead>
             <tbody>
@@ -41,40 +159,79 @@
                 {
 
                     <tr>
+                        @*<td>
+                                @item.ID
+                            </td>*@
                         <td>
 
-                            @item.ID
-                        </td>
-                        <td>
+
+
+
 
                             @item.code
                         </td>
                         <td>
 
+
+
+
+
                             @item.title
                         </td>
+                        @*<td>
+
+
+
+
+
+                                @item.ope6_id
+                            </td>*@
+                        @*<td>
+
+
+
+
+
+                                @item.unit_id
+                            </td>*@
+
+                        @*<td><a href="update" class="button special small">Update</a> <a href="Delete" class="button special small">Delete</a></td>*@
+                        @*<td><a href="update" class="button special small">Update</a> <a href="Delete" class="button special small">Delete</a></td>*@
                         <td>
+                            @Html.ActionLink(
+                                     "Update",
+                                     "Update",
+                                     "Home",
+                                     new { id = item.code }
+                                     );
 
-                            @item.ope6_id
+                            @Html.ActionLink(
+                                   "Delete",
+                                   "Delete",
+                                   "Home",
+                                   new { id = item.code }
+                                   );
+                            @*<form method="post" asp-controller="Home" asp-action="Deleteconfirmed">
+                                    <button type="submit" name="action">Delete</button>
+                                </form>*@
+
+
+
+
+
+                            @*<input type="button" value="Delete" onclick="Delete()" />*@
                         </td>
-                        <td>
-
-
-                            @item.unit_id
-                        </td>
-
-                        <td><a href="update" class="button special small">Update</a> <a href="Delete" class="button special small">Delete</a></td>
                     </tr>
 
                 }
             </tbody>
-           
+
         </table>
     </div>
 
     <div class="12u$">
         <ul class="actions">
-            <center><a href="createnew" class="button special small">Create a New Program</a></center>
+            <center><a href="/Home/createnew" class="button special small">Create a New Program</a></center>
         </ul>
     </div>
 
@@ -100,3 +257,49 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+
+    @*<a href='@Url.Action("SearchResults","Home")?schoolName=' document.getElementById("field3").value'>Search</a>*@
+    @*@Html.ActionLink("Search", "SearchResults", "SearchUniv", new { schoolName =  $("#field3").value }, null) *@
+
+    function Update() {
+
+        //window.open("Home/Update");
+        //window.open.href("/Home/Update");
+
+        var schoolid : a;
+
+        window.location.href = "/Home/Update";
+
+
+       ////var sName = document.getElementById("field3").value;
+       //var sName = document.getElementById("field3").value;
+       // console.log(sName);
+        //var search = {
+        //    "schoolName": sName
+        @*//};
+      $.ajax({
+          type: 'POST',
+          url: "/Home/Update/"
+          //url: "@Url.Action("SearchResults", "Home")?schoolName=" + sName
+          //data: sName,
+          contentType: 'application/json; charset=utf-8'
+
+    }).done(function (response) {
+        window.location.href = "/Home/Update"
+    });*@
+
+
+    }
+
+
+    function Delete() {
+
+        window.location.href = "/Home/Delete";
+
+
+    }
+
+
+</script>

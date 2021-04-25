@@ -1,10 +1,12 @@
-﻿<!DOCTYPE HTML>
+﻿
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Elements - Theory by TEMPLATED</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 </head>
 <body class="subpage">
 
@@ -12,9 +14,9 @@
     <header id="header">
         <div class="inner" style="font-weight:bold;font-size:x-large">
             <nav id="nav">
-                <a href="Index">Home</a>
-                <a href="Searchuniv">Search Univ</a>
-                <a href="Aboutus">About Us</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-area="" asp-controller="Home" asp-action="Searchuniv">Search Univ</a>
+                <a asp-area="" asp-controller="Home" asp-action="Aboutus">About Us</a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -31,27 +33,22 @@
 
             <hr class="major" />
 
-            <form method="post" action="#">
+            <form method="post" asp-controller="Home" asp-action="Createnew">
                 <div class="row uniform table-wrapper">
-                    <div class="6u 12u$(xsmall)">
-                        <div class="wrapper">
-                            <label for="Institution">Institution (Read-Only)</label>
-                            <input type="text" name="Instituition Name" id="Instituition Name" value="" placeholder="Concorde Career Institute-Tampa" />
-
-                        </div>
-                    </div>
+ 
                     <div class="6u$ 12u$(xsmall)">
                         <label for="Programs">Program Name</label>
-                        <input type="text" name="Programs" id="Program" value="" placeholder="Program" />
+                        <br />
+                        <input type="text" name="Program" id="Program" value="" placeholder="Program" />
                     </div>
+                    <br /><br /><br />
 
                     <!-- Break -->
                     <div class="12u$">
                         <ul class="actions">
                             <center>
-                                <a class="button special small">Submit</a>
-                                <a class="button special small">Reset</a>
-                                <a href="programDetails" class="button special small">Jump back to Program Details</a>
+                                <input type="button" class="button special small" value="Submit" onclick="CreateNewProgram()" />
+
                             </center>
                         </ul>
                     </div>
@@ -59,11 +56,6 @@
             </form>
 
             <hr />
-
-
-
-        </div>
-        </div>
 
         </div>
     </section>
@@ -73,7 +65,6 @@
             <div class="flex">
                 <div class="copyright">
                     &copy; USF <a>GROUP 4</a>
-
                 </div>
             </div>
         </div>
@@ -85,6 +76,25 @@
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-
 </body>
 </html>
+<script type="text/javascript">
+
+
+    function CreateNewProgram() {
+        //var sName = document.getElementById("field3").value;
+        var pName = document.getElementById("Program").value;
+        console.log(pName);
+        $.ajax({
+            type: 'POST',
+            url: "/Home/Createnew/" + pName,
+            //url: "@Url.Action("SearchResults", "Home")?schoolName=" + sName
+            //data: sName,
+            contentType: 'application/json; charset=utf-8'
+
+        })
+            .done(function (response) {
+                window.location.href = "/Home/Thanks/Thanks! The program has been added."
+        })
+    }
+</script>
