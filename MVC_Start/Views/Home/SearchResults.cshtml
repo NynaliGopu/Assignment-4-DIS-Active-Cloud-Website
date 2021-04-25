@@ -36,7 +36,7 @@
                 <!--<h2>Search</h2>-->
 
                 <h2><img src="~/images/search.jpg" alt="search" height="100" width="200" /></h2>
-                <input type="text" id="field3" class="field-style field-split align-left" placeholder="Concorde Career Institute-Tampa" />
+                <input type="text" id="field3" class="field-style field-split align-left" placeholder="Details" />
 
                 <a href='@Url.Action("SearchResults","Home")?schoolName=' $('#field3').value'>Search</a>
 
@@ -66,38 +66,21 @@
                             <tr>
                                 <td>
 
-
-
-
-
                                     @item.schoolname
                                 </td>
                                 <td>
-
-
-
-
 
                                     @item.schoolcity
                                 </td>
                                 <td>
 
-
-
-
-
                                     @item.schoolstate
                                 </td>
                                 <td>
 
-
-
-
-
                                     @item.schoolzip
                                 </td>
                                 <td>
-
 
                                     @Html.ActionLink(
                                     "Details",
