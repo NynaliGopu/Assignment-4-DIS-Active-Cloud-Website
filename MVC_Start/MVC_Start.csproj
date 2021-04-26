@@ -2,9 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>ea84344d-1180-4a6c-bc70-1a1449a6f043</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\font-awesome.min.css" />
+    <Content Remove="wwwroot\css\main.css" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.eot" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.svg" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.ttf" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.woff" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <Content Remove="wwwroot\fonts\FontAwesome.otf" />
     <Content Remove="wwwroot\images\AM11.jpeg" />
     <Content Remove="wwwroot\images\Collegescorecard.png" />
     <Content Remove="wwwroot\images\datavisualization.png" />
@@ -15,16 +24,33 @@
     <Content Remove="wwwroot\images\saranya.jpg" />
     <Content Remove="wwwroot\images\search.jpg" />
     <Content Remove="wwwroot\images\usf-logo-png-2.png" />
+    <Content Remove="wwwroot\img\AM11.jpeg" />
+    <Content Remove="wwwroot\img\Collegescorecard.png" />
+    <Content Remove="wwwroot\img\datavisualization.png" />
+    <Content Remove="wwwroot\img\ERD.png" />
+    <Content Remove="wwwroot\img\homeimage.JPG" />
+    <Content Remove="wwwroot\img\imagenew.jpg" />
+    <Content Remove="wwwroot\img\Nynali2.jpg" />
+    <Content Remove="wwwroot\img\saranya.jpg" />
+    <Content Remove="wwwroot\img\search.jpg" />
+    <Content Remove="wwwroot\img\usf-logo-png-2.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="wwwroot\lib\" />
-    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\font-awesome.min.css" />
+    <None Include="wwwroot\css\main.css" />
     <None Include="wwwroot\css\StyleSheet.css" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\fonts\FontAwesome.otf" />
     <None Include="wwwroot\images\AM11.jpeg" />
     <None Include="wwwroot\images\Collegescorecard.png" />
     <None Include="wwwroot\images\datavisualization.png" />
@@ -35,6 +61,20 @@
     <None Include="wwwroot\images\saranya.jpg" />
     <None Include="wwwroot\images\search.jpg" />
     <None Include="wwwroot\images\usf-logo-png-2.png" />
+    <None Include="wwwroot\img\AM11.jpeg" />
+    <None Include="wwwroot\img\Collegescorecard.png" />
+    <None Include="wwwroot\img\datavisualization.png" />
+    <None Include="wwwroot\img\ERD.png" />
+    <None Include="wwwroot\img\homeimage.JPG" />
+    <None Include="wwwroot\img\imagenew.jpg" />
+    <None Include="wwwroot\img\Nynali2.jpg" />
+    <None Include="wwwroot\img\saranya.jpg" />
+    <None Include="wwwroot\img\search.jpg" />
+    <None Include="wwwroot\img\usf-logo-png-2.png" />
+    <None Include="wwwroot\js\jquery.min.js" />
+    <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\skel.min.js" />
+    <None Include="wwwroot\js\util.js" />
   </ItemGroup>
 
   <ItemGroup>

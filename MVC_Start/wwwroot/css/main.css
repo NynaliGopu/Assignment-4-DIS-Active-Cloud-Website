@@ -2957,7 +2957,7 @@
 
 #banner {
 	padding: 12em 0 10em 0;
-	background-image: url('../../img/Collegescorecard.png');
+	background-image: url('/img/Collegescorecard.png');
 	background-size: cover;
 	background-position: top;
 	background-attachment: fixed;
@@ -2980,7 +2980,7 @@
 
 .bannernew2 {
 	padding: 12em 0 10em 0;
-	background-image: url('/img/homeimage.JPG');
+	background-image: url('../../images/homeimage.JPG');
 	background-size: cover;
 	background-position: top;
 	background-attachment: fixed;
@@ -2992,7 +2992,7 @@
 
 imagenew {
 	padding: 12em 0 10em 0;
-	background-image: url('../../img/imagenew.jpg');
+	background-image: url('/img/imagenew.jpg');
 	background-size: cover;
 	background-position: top;
 	background-attachment: fixed;

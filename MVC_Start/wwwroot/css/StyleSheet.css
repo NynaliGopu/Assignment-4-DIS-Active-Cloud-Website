@@ -3101,3 +3101,15 @@ imagenew {
         text-align: center;
     }
 }
+
+.bannernew2 {
+    padding: 12em 0 10em 0;
+    background-image: url('~/images/homeimage.png');
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align: center;
+    border-top: 0.5em solid #5385c1;
+}
+
